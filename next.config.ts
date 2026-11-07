@@ -13,6 +13,10 @@ const nextConfig: NextConfig = {
     ignoreBuildErrors: true,
   },
   reactStrictMode: false,
+  // Exclude API routes from static export
+  skipTrailingSlashRedirect: true,
+  // The /api route can't be statically exported, so we need to handle it
+  // For GitHub Pages, we'll just not include it
 };
 
 export default nextConfig;

@@ -13,6 +13,7 @@ import {
   Accessibility,
   BookOpen,
   Captions,
+  Globe,
   Hand,
   Home,
   Keyboard,
@@ -24,6 +25,7 @@ import { useWorkspace } from '@/hooks/use-workspace';
 import { useSettings } from '@/hooks/use-settings';
 import HomeView from '@/components/accessbridge/home-view';
 import SignView from '@/components/accessbridge/sign-view';
+import IslView from '@/components/accessbridge/isl-view';
 import MorseView from '@/components/accessbridge/morse-view';
 import CaptionsView from '@/components/accessbridge/captions-view';
 import WorkspaceView from '@/components/accessbridge/workspace-view';
@@ -35,6 +37,7 @@ import { cn } from '@/lib/utils';
 export type ViewId =
   | 'home'
   | 'sign'
+  | 'isl'
   | 'morse'
   | 'captions'
   | 'workspace'
@@ -45,6 +48,7 @@ export type ViewId =
 const NAV_ITEMS: { id: ViewId; label: string; icon: React.ComponentType<{ className?: string }> }[] = [
   { id: 'home', label: 'Home', icon: Home },
   { id: 'sign', label: 'Sign to Text', icon: Hand },
+  { id: 'isl', label: 'ISL (Indian Sign Language)', icon: Globe },
   { id: 'morse', label: 'Morse', icon: Keyboard },
   { id: 'captions', label: 'Captions', icon: Captions },
   { id: 'workspace', label: 'Workspace', icon: Type },
@@ -150,6 +154,7 @@ export default function AppShell() {
       >
         {view === 'home' && <HomeView onNavigate={navigate} />}
         {view === 'sign' && <SignView onNavigate={navigate} />}
+        {view === 'isl' && <IslView onNavigate={navigate} />}
         {view === 'morse' && <MorseView onNavigate={navigate} />}
         {view === 'captions' && <CaptionsView onNavigate={navigate} />}
         {view === 'workspace' && <WorkspaceView />}
